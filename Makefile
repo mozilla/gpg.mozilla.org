@@ -8,6 +8,10 @@ all: docker-compose.yml
 build: */Dockerfile
 	docker-compose -f docker-compose.yml build
 
+rebuild:
+	@echo Rebuilding/updating images
+	docker-compose -f docker-compose.yml build --pull --no-cache
+
 install:
 	@echo ensuring docker volume is present
 	docker volume create sks
