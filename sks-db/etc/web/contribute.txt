@@ -1,0 +1,27 @@
+{
+    "name": "GnuPG SKS Server",
+    "description": "Servers GnuPG keys and synchronize with well-known SKS servers.",
+    "repository": {
+        "url": "https://bitbucket.org/skskeyserver/sks-keyserver",
+        "license": "GPL2"
+    },
+    "bugs": {
+        "list": "https://bitbucket.org/skskeyserver/sks-keyserver/issues",
+        "report": "https://bitbucket.org/skskeyserver/sks-keyserver/issues"
+    },
+    "urls": {
+        "prod": "https://gpg.mozilla.org/",
+        "prod": "https://keyserver.mozilla.org/"
+    },
+    "keywords": [
+        "gnupg",
+        "gpg",
+        "pgp",
+        "sks",
+        "keys",
+        "infosec",
+        "security",
+        "sign",
+        "encrypt"
+    ]
+}

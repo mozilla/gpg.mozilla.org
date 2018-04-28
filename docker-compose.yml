@@ -1,0 +1,44 @@
+version: '3'
+services:
+    sks-cron:
+        build:
+            context: sks-cron
+            dockerfile: Dockerfile
+        volumes:
+            - sks:/var/sks
+        restart: always
+        networks:
+            - default
+    sks-db:
+        build:
+            context: sks-db
+            dockerfile: Dockerfile
+        volumes:
+            - sks:/var/sks
+        restart: always
+        networks:
+            - default
+        ports:
+            - "11371:11371"
+        expose:
+            - 11371
+    sks-recon:
+        build:
+            context: sks-recon
+            dockerfile: Dockerfile
+        depends_on:
+            - sks-db
+        volumes:
+            - sks:/var/sks
+        restart: always
+        networks:
+            - default
+        ports:
+            - "11370:11370"
+        expose:
+            - 11370
+networks:
+    default:
+
+volumes:
+    sks:

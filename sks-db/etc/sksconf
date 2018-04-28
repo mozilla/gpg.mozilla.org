@@ -1,0 +1,9 @@
+basedir: /var/sks
+logfile: log
+debuglevel: 4
+hostname: keyserver.mozilla.org
+# server_contact: 0x2FC05413E11014B0DC658AD5956347F6FBF3A415 
+from_addr: kang@mozilla.com
+membership_reload_interval: 6
+recon_port: 11370
+recon_address: 0.0.0.0
