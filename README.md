@@ -55,3 +55,11 @@ and change [sks-db/etc/](sks-db/etc/) files such as `sksconf`, `membership`, etc
 A convenience function is provided to update the website on the volume: 
 - edit [sks-db/etc/web/](sks-db/etc/web/)
 - type `make update-web`
+
+## Containers update
+
+Type `make rebuild`.
+
+## Run everything in docker-compose
+
+Type `make`.
