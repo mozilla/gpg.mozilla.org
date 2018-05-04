@@ -1,5 +1,18 @@
 version: '3'
 services:
+    nginx:
+        depends_on:
+            - sks-db
+        build:
+            context: nginx
+            dockerfile: Dockerfile
+        restart: always
+        networks:
+            - default
+        ports:
+            - "8080:8080"
+        expose:
+            - 8080
     sks-cron:
         build:
             context: sks-cron
@@ -20,8 +33,6 @@ services:
             - default
         ports:
             - "11371:11371"
-        expose:
-            - 11371
     sks-recon:
         build:
             context: sks-recon
