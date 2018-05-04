@@ -1,0 +1,74 @@
+h1,
+h2,
+p {
+  margin: 0; /* Let's zero those margins */
+}
+
+#container {
+  border: 1px solid #555; /* Nice transition from white background */ 
+  width: 600px; /* Should be narrow enough for small screens */
+  margin: 0 auto; /* Centering */
+  font-size: 1.1em; /* Font big enough not to need to squint */
+  font-family: Open Sans, Arial;
+  line-height: 1.3em;
+}
+
+#title { 
+  background-color:#e2e5e2;
+  padding: 10px;
+}
+
+#title h1, #title h2 {
+  margin-top: 0.3em;
+}
+
+#info { 
+  background-color:#fff;
+  padding: 5px 10px;
+}
+
+#main {
+  background : #fff;
+  padding: 0 10px 10px 10px;
+}
+
+#main header {
+  padding-top: 1em;
+}
+
+#main p {
+  margin: 0.5em 0;
+}
+
+#keytext {
+  width: 100%;
+  height: 150px;
+  border: 1px solid #555;
+  background : #fff;
+  max-width: 100%;
+  display: block;
+}
+
+ul {
+  width: 100%;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+li {
+  width: 99%;
+}
+
+li label {
+  width: 57%;
+  display: inline-block;
+}
+button {
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ddd));
+  background: -moz-linear-gradient(top, #fff, #ddd);  
+  border: 1px solid #bbb;
+}
+
+#info p {line-height: 1.1em; margin-bottom: 0.3em;}
