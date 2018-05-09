@@ -3,6 +3,37 @@
 This is the setup for the SKS keyserver running at https://gpg.mozilla.org
 It runs the [SKS Keyserver](https://bitbucket.org/skskeyserver/sks-keyserver/wiki/Home) software
 
+# How SKS works from an operational stand-point
+
+## Diagram
+
+```
+                          Ports:11371,11372,80,443
+    +--------------+         +----------------+            +----------------+                  +--------------------------+
+    |              |         |                |            |                |    Port 11370    |                          |
+    |   GnuPG CLI  +--------->                |            |   sks recon    <------------------>   (sks recon)            |
+    |              |         |  HTTP(S)       |            |                |                  |                          |
+    +--------------+         |  Load Balancer |            +----------------+                  |    3rd party             |
+                             |  (Nginx)       |                                                |                          |
+    +--------------+         |                |            +----------------+                  |    SKS Server            |
+    |              |         |                |            |                |                  |                          |
+    |  Web Browser +--------->                +------------>   sks db       |                  |                          |
+    |              |         |                | Port 11371 |                |                  |                          |
+    +--------------+         +----------------+            +----------------+                  +--------------------------+
+```
+
+## Ports
+
+- TCP 11370: Used by `sks recon` which is the key synchronization server. "Recon" stands for "Reconciliation". It uses
+  the SKS protocol and does not understand HTTP (i.e. cannot be served by an HTTP load balancer).
+- TCP 11371: Used by `sks db` and serves both a web interface for web browsers and for programs such as `gnupg`. It uses
+  the HTTP protocol (HKP port).
+- TCP 80: Not used by SKS, but generally used by a reverse proxy which hits back SKS's port 11371 (HTTP port).
+- TCP 443, 11372: Not used by SKS, but generally used by a reverse proxy which hits back SKS's port 11371 and performs TLS
+  termination (HTTPS, HKPS ports).
+
+# Setup
+
 ## Volume (persistent data)
 
 Due to how SKS works, the whole `/var/sks` directory is mounted as a persistent volume.
