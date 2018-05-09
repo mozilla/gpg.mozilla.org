@@ -2,4 +2,5 @@ SHELL=/bin/bash
 PATH=/sbin:/bin:/usr/sbin:/usr/bin
 MAILTO=root
 
-* * * * * echo "hello" >> /hello.txt
+0 0 * * * sks cleandb
+0 2 * * * db_archive -d -h /var/lib/sks/KDB && db_archive -d -h /var/lib/sks/PTree
