@@ -32,6 +32,16 @@ It runs the [SKS Keyserver](https://bitbucket.org/skskeyserver/sks-keyserver/wik
 - TCP 443, 11372: Not used by SKS, but generally used by a reverse proxy which hits back SKS's port 11371 and performs TLS
   termination (HTTPS, HKPS ports).
 
+## Addresses
+
+Since port TCP 11370 is not HTTP, it can be difficult to load-balance, and to have on a co-existing domain-name with the
+other ports, depending on your hosting provider.
+
+In our case:
+
+- TCP 11370 listens on keyserver.mozilla.org
+- TCP 11371, 11372, 80, 443 listen on gpg.mozilla.org (HTTP load balancer)
+
 # Setup
 
 ## Volume (persistent data)
