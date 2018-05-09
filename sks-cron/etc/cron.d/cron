@@ -2,5 +2,5 @@ SHELL=/bin/bash
 PATH=/sbin:/bin:/usr/sbin:/usr/bin
 MAILTO=root
 
-0 0 * * * sks cleandb
-0 2 * * * db_archive -d -h /var/lib/sks/KDB && db_archive -d -h /var/lib/sks/PTree
+0 0 * * * sudo -u sks sks cleandb
+0 2 * * * sudo -u sks db_archive -d -h /var/lib/sks/KDB && sudo -u sks db_archive -d -h /var/lib/sks/PTree
