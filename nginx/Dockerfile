@@ -20,7 +20,8 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 # allow transversing the tmp dir
 RUN chmod -R a+r /var/lib/nginx/tmp && \
     chown -R nginx:nobody /var/lib/nginx/tmp && \
-    chmod -R g+rwx /var/lib/nginx/tmp
+    chmod -R g+rwx /var/lib/nginx/tmp && \
+    chmod a+r /var/lib/nginx
 EXPOSE 80
 STOPSIGNAL SIGTERM
 CMD ["nginx", "-g", "daemon off;"]
