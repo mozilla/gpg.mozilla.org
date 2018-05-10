@@ -1,9 +1,18 @@
-COMPOSE_CMD := "up"
 DUMP_URL := "http://keys.niif.hu/keydump/"
 VOLUME := "gpgmozillaorg_sks"
 
-all: docker-compose.yml
-	docker-compose -f docker-compose.yml $(COMPOSE_CMD)
+all: build
+
+run: docker-compose.yml cleanup
+	docker-compose -f docker-compose.yml up
+
+kill: docker-compose.yml
+	docker-compose -f docker-compose.yml down
+
+cleanup:
+	@echo Removing old unix sockets...
+	docker run -ti --mount source=$(VOLUME),target=/var/sks -u 0 gpgmozillaorg_sks-db \
+	    rm -f /var/sks/recon_com_sock && rm -f /var/sks/db_com_sock
 
 build: */Dockerfile
 	docker-compose -f docker-compose.yml build
