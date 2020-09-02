@@ -1,7 +1,36 @@
 # gpg.mozilla.org SKS Keyserver
 
-This is the setup for the SKS keyserver running at https://gpg.mozilla.org
-It runs the [SKS Keyserver](https://bitbucket.org/skskeyserver/sks-keyserver/wiki/Home) software
+This was the setup for the SKS keyserver that used to run at https://gpg.mozilla.org.
+It ran the [SKS Keyserver](https://github.com/SKS-Keyserver/sks-keyserver/wiki) software.
+
+# Status : gpg.mozilla.org service has ended
+
+gpg.mozilla.org was an OpenPGP Synchronizing Key Server (SKS) which 
+participated in the global mesh of SKS servers that enabled OpenPGP users to 
+retrieve and publish public keys.
+
+In June of 2019 attackers showed the ease of a certificate spamming attack that
+can poison clients' OpenPGP installations when the affected certificates are
+fetched.
+
+Robert J. Hansen, a member of the GnuPG project, was one of the people who's
+certificate was affected. He has 
+[a good writeup on the incident](https://gist.github.com/rjhansen/67ab921ffb4084c865b3618d6955275f)
+and the impact to the use of SKS keyservers like gpg.mozilla.org.
+
+The vulnerability is recorded in [CVD-2019-13050](https://nvd.nist.gov/vuln/detail/CVE-2019-13050).
+
+As a result of this type of attack being see in the wild, the problems Robert
+Hansen identifies in his post about mitigating this vulnerability in SKS servers
+and unrelated operational challenges Mozilla has encountered in operating the
+gpg.mozilla.org SKS server, we've decided to stop hosting the gpg.mozilla.org
+SKS service as of September 2020.
+
+For users that have configured their OpenPGP client to use gpg.mozilla.org, we
+recommend you either stop using the keyserver based features of OpenPGP entirely
+by removing the `keyserver` directive in your gpg.conf configuration or you
+configure your client to use the `hkps://keys.openpgp.org` keyserver instead which
+is not part of the keyserver network. 
 
 # How SKS works from an operational stand-point
 

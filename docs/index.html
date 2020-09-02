@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="static/img/favicon.png">
+
+    <title>SKS key server at gpg.mozilla.org</title>
+
+    <link rel="stylesheet" href="static/css/style.css" type="text/css">
+  </head>
+  <body class="mzp-t-mozilla">
+
+    <header class="c-page-header">
+      <div class="mzp-l-content">
+        <a class="c-page header-logo" href="https://www.mozilla.org"><img src="static/img/logo-mozilla.svg" alt="Mozilla"></a>
+      </div>
+    </header>
+
+    <div class="mzp-l-content mzp-t-content-md">
+      <div class="mzp-c-emphasis-box">
+        <h1>gpg.mozilla.org service has ended</h1>
+        <p>
+          gpg.mozilla.org was an OpenPGP Synchronizing Key Server (SKS) which participated
+          in the global mesh of SKS servers that enabled OpenPGP users to retrieve and
+          publish public keys.
+        </p>
+        <p>
+          In June of 2019 attackers showed the ease of a certificate spamming attack that
+          can poison clients' OpenPGP installations when the affected certificates are
+          fetched.
+        </p>
+        <p>
+          Robert J. Hansen, a member of the GnuPG project, was one of the people who's
+          certificate was affected. He has
+          <a href="https://gist.github.com/rjhansen/67ab921ffb4084c865b3618d6955275f">a good writeup on the incident</a>
+          and the impact to the use of SKS keyservers like gpg.mozilla.org.
+        </p>
+        <p>
+          The vulnerability is recorded in
+          <a href="https://nvd.nist.gov/vuln/detail/CVE-2019-13050">CVD-2019-13050</a>.
+        </p>
+        <p>
+          As a result of this type of attack being see in the wild, the problems Robert
+          Hansen identifies in his post about mitigating this vulnerability in SKS servers
+          and unrelated operational challenges Mozilla has encountered in operating the
+          gpg.mozilla.org SKS server, we've decided to stop hosting the gpg.mozilla.org
+          SKS service as of September 2020.
+        </p>
+        <p>
+          For users that have configured their OpenPGP client to use gpg.mozilla.org, we
+          recommend you either stop using the keyserver based features of OpenPGP entirely by removing
+          the <code>keyserver</code> directive in your <code>gpg.conf</code> configuration or you
+          configure your client to use the <code>hkps://keys.openpgp.org</code> keyserver instead which
+          is not part of the keyserver network.
+        </p>
+      </div>
+    </div>
+
+  </body>
+</html>
