@@ -51,8 +51,9 @@
           For users that have configured their OpenPGP client to use gpg.mozilla.org, we
           recommend you either stop using the keyserver based features of OpenPGP entirely by removing
           the <code>keyserver</code> directive in your <code>gpg.conf</code> configuration or you
-          configure your client to use the <code>hkps://keys.openpgp.org</code> keyserver instead which
-          is not part of the keyserver network.
+          configure your <code>gpg.conf</code> to use <code>keyserver hkps://keys.openpgp.org</code>
+          instead. This will cause your client to use the <a href="https://keys.opengpg.org/">keys.opengpg.org</a>
+          service as your keyserver which avoids this problem as keys.opengpg.org is not part of the keyserver network.
         </p>
       </div>
     </div>
